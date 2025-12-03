@@ -1,0 +1,64 @@
+// const fs = require('fs');
+// fs.readFile("C:\\Users\\z00562tu\\Downloads\\AoC-25\\1a-input.txt", (err, data) => {
+//     if (err) throw err;
+//     const l = data.toString().split('\n');
+//     let pos = 50;
+//     let cnt = 0;
+//     for (let i = 0; i < l.length; i++) {
+//         const dir = l[i][0];           // 'L' or 'R'
+//         const dist = parseInt(l[i].slice(1)); 
+        
+//     
+
+//             if (dir === 'L') {
+//                 pos -= dist;
+//             } else {
+//                 pos += dist;
+//             }
+
+//             pos = ((pos % 100) + 100) % 100;
+            
+//             if (pos === 0) {
+//                 cnt++;
+//             }
+//        
+//     }
+//     console.log(cnt);
+//     // console.log(l);
+//     // console.log(data.toString());
+// });
+
+
+
+/////////////// PART 2
+const fs = require('fs');
+fs.readFile("C:\\Users\\z00562tu\\Downloads\\AoC-25\\1a-input.txt", (err, data) => {
+    if (err) throw err;
+    const l = data.toString().split('\n');
+    let pos = 50;
+    let cnt = 0;
+    for (let i = 0; i < l.length; i++) {
+        const dir = l[i][0];           // 'L' or 'R'
+        const dist = parseInt(l[i].slice(1)); 
+        
+        for(let c=0; c<dist; c++) {
+
+            if (dir === 'L') {
+                pos --;
+                if(pos < 0) pos = 99;
+            } else {
+                pos ++;
+                if(pos > 99) pos = 0;
+            }
+
+            // pos = ((pos % 100) + 100) % 100;
+            
+            if (pos === 0) {
+                cnt++;
+            }
+        }
+    }
+    console.log(cnt);
+    // console.log(l);
+    // console.log(data.toString());
+});
